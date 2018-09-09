@@ -1,0 +1,291 @@
+/*----- CONTAINER BARE DE RECHERCHE ----*/
+/*Bloc bare de recherche*/
+.containerBareSearch{
+    border: 1px solid white;
+    padding: 25px 45px;
+    margin-left: 60px;
+}
+
+/*Container champs de saisie (gare de départ et -//- d'arriver)*/
+.champGareDepart{
+    border-bottom: none;
+}
+.champGare input, .age{
+    text-align: left;
+    padding-left: 55px;
+}
+
+.champGare input, .champGare span{
+    height: 45px;
+}
+
+/*icone sur les champs de sisies des gares */
+
+.icone{
+    display: inline-block;
+    position: relative;
+    font-size: 25px;
+    top: 38px;
+    left: 18px;
+    z-index: 4;
+}
+
+.icone2{
+    display: inline-block;
+    position: relative;
+    font-size: 25px;
+    top: 83px;
+    left: -10px;
+    z-index: 4;
+}
+
+.fa-angle-double-right{
+    display: inline-block;
+    position: relative;
+    top: 17px;
+}
+.fa-angle-double-left{
+    display: inline-block;
+    position: relative;
+    top: 65px;
+}
+
+/* option renverser */
+.circle{
+    display: inline-block;
+    position: absolute;
+    z-index: 10;
+    border: 1px solid #9b9ba7;
+    border-radius: 50px 50px;
+    left: 90%;
+    top:90px;
+    width: 35px; height: 35px;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+.circle i{
+    font-size: 1.2em;
+    display: inline-block;
+    position: relative;
+    left: 8px;
+    top: 8px;
+}
+
+/*icone sur le champs "Aller" et "Retour"*/
+.fa-arrow-alt-circle-down{
+    left: -6px;
+}
+
+/*icone type utilisateur, il se trouve sur le button age(1Adulte...)*/
+.iconeUser{
+    display: inline-block;
+    position: relative;
+    font-size: 18px;
+    top: 30px;
+    left: 25px;
+    z-index: 4;
+}
+
+/*button age*/
+.list-group-item, .age{
+    padding-left: 50px;
+}
+
+
+/*icone plus (se trouve à côté de button age)*/
+.fa-plus{
+    color: #01c3a7;
+    cursor: pointer;
+}
+
+/* Champs de saisi gares */
+.list-group-item{
+    background-color: #fafafc;
+    line-height: 25px;
+    bottom: 20px;
+}
+
+/*Chanmps de saisi "Via"*/
+.via{
+    display: none;
+}
+
+/* Container button rechercher*/
+.containerSearch{
+    margin-right: 0px;
+}
+
+/*button recherche*/
+.containerSearch .searche{
+    line-height: 40px;
+    border: none;
+    background-color: #01c3a7;
+    color: white;
+}
+
+/*Lien code de reduction*/
+.containerSearch .codeReduction{
+    top: 13px;
+    color: #01c3a7;
+}
+
+
+
+/*---CONTAINER AFFICHANT LE RESULTAT---*/
+.containerBareSearchDroite, #calendar{
+    border: 1px solid black;
+    margin-left: 45px;
+    height: 450px;
+    display: block;
+}
+
+/*Choix passager*/
+.containerChoixDuPassager{
+    border: 1px solid white;
+    margin-left: 45px;
+    height: 448px;
+    padding-bottom: 15px;
+    display: none;
+}
+
+.containerChoixDuPassager #contnairTitre{
+    padding-top: 15px;
+}
+
+#contnairTitre p{
+    font-size: 1.5em;
+}
+
+/*Formulaire*/
+.agePassager .contAgePassager{
+    padding-right: 0px;
+}
+
+.agePassager .autreContainer{
+    padding-left: 0px;
+}
+.agePassager .autreContainer .age{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.agePassager .form-group, .agePassager .carteAbonnement{
+    padding-right: 0px;
+}
+.agePassager .carteAbonnement{
+    border-left: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+
+
+.agePassager .ageClient{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.agePassager .form-control, .agePassager .input-group-addon{
+    
+    height: 40px;
+}
+
+.ajoutPassager{
+    margin-top: 10px;
+    padding-left: 15px; padding-right: 15px;
+}
+.agePassager .descriptAgeJeune{
+    padding: 0px;
+    display: none;
+    position: relative;
+    bottom: 10px;
+    font-size: 0.9em;
+}
+
+
+.ajoutPassager div{
+    border: 1px solid blue;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#seConnecter{
+    margin-top: 45px;
+}
+
+/*Entête du container*/
+.ligne1{
+    line-height: 40px;
+    border: 1px solid black;
+    background-color: #253551;
+}
+
+/*Paragraphe se trouvant dans l'entête du container*/
+.ligne1 p{
+    top: 5px;
+    font-size: 1.5em;
+    color: white;
+}
+
+/*Container icone (bare resultat)*/
+.iconGauche{
+    display: inline-block;
+    margin-left: 25px;
+    border: 1px solid black;
+    border-radius: 50px 50px;
+    width: 40px; height: 40px;
+
+    background-color: #253551;
+}
+
+/*icone à côté de paragraphe (où? container resultat)*/
+.iconGauche i{
+    display: inline-block;
+    position: relative;
+    left: 9px;
+    top: 12px;
+    font-size: 1.3em;
+    color: white;
+}
+
+.pargraphe strong{
+    color: #01c3a7;
+}
+
+.train{
+    color: #fafafc;
+}
+
+.text{
+    margin-left: 62px;
+
+}
+
+/*Calendrier*/
+#calendar{
+    display: none;
+}
+
+#calendar .row{
+    border: 1px sold black;
+    padding-top: 25px;
+}
+
+/*Option pa de retour*/
+#optionPasDeRetour{
+    display: none;
+    line-height: 40px;
+    border-radius: 5px;
+    background-color: #01c3a7;
+    text-align: center;
+}
+
+/*texte ajout un nouveau passager*/
+#textAjoutPassager{
+    cursor: pointer;
+}

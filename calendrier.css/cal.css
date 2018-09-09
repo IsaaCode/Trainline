@@ -1,0 +1,144 @@
+
+/* DEBUT calendrier JS : jsSimpleDatePickr */
+#calendarMain1, #calendarMain2{
+    margin-left: 4%;
+    margin-right: 11%;
+    height: 30px;
+    width: 410px;
+}
+
+
+/* conteneur calendrier */
+.calendarWrap{
+    display: none;
+    position: relative;
+    z-index: 1000;
+    line-height: 30px;
+    width: 100%;
+    bottom: 25px;
+    padding: 5px 10px 10px 10px;
+    background-color: #2e373f;
+    border: 1px solid #dce3e6;
+    /*background-color: rgba(46, 55, 63, 0.95);*/
+    -moz-box-shadow: 0 0 10px #555;
+    -webkit-box-shadow: 0 0 10px #555;
+    box-shadow: 0 0 10px #555;
+    font-size: 12px;
+}
+/* bouton d'affichage*/
+#calendarMain1 > input, #calendarMain2 > input{
+    display: block;
+    width: 100px;
+    height: 22px;
+    padding-top: 2px;
+    background-color: #2e373f;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+}
+#calendarMain1 > input:hover, #calendarMain2 > input:hover{
+    background-color: #2673cb;
+}
+/* navigation dans le calendrier */
+.calendarWrap ul{
+    width: 320px;
+    margin: auto;
+    margin-top: 15px; margin-bottom: 15px;
+    padding: 0;
+}
+.calendarWrap li{
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    display: inline-block;
+    *display: inline;
+}
+.calendarWrap li.calendarTitle{
+    width: 170px;
+    margin-left: 51px;
+    margin-right: 51px;
+    color: #ccc;
+    text-align: center;
+    font-size: 1.5em;
+}
+.calendarWrap li input{
+    width: 20px;
+    background-color: #5d6f7f;
+    border: none;
+    color: #fff;
+}
+.calendarWrap li input:hover{
+    background-color: #6f8598;
+}
+/* calendrier */
+.jsCalendar{
+    color: #fff;
+    border-collapse: collapse;
+}
+
+.jsCalendar tbody{
+    display: inline-block;
+    margin-left: 35px;
+
+}
+
+.jsCalendar th{
+    color: #8ba7bf;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    padding-right: 14px;
+}
+.jsCalendar td{
+    padding: 0;
+    border: none;
+}
+.jsCalendar a{
+    display: block;
+    width: 30px;
+    padding: 3px 0 3px 0;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+.jsCalendar .day:checked{
+    background-color: #01c3a7;
+}
+.jsCalendar .day:hover a{
+    background-color: #01c3a7;
+    border-color: #01c3a7;
+}
+.jsCalendar .selectedDay a{
+    color: #01c3a7;
+}
+/* FIN calendrier JS : jsSimpleDatePickr */
+
+
+/*Heure*/
+#heur{
+    display: block;
+    position: relative;
+    top: 259px;
+    border: 1px solid #dce3e6;
+    margin-left: 18px; margin-right: 28px;
+    padding-left: 7%;
+    padding-bottom: 25px;
+}
+
+#heur .h{
+    display: inline-block;
+    position: relative;
+    padding-left: 5px; padding-right: 5px;
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#heur .h:hover{
+    border: 1px solid #01c3a7;
+    border-radius: 5px;
+    background-color: #01c3a7;
+
+}

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>trainline</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../bootstrap/fonts/glyphicons-halflings-regular.svg">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../fontawesome-free/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../calendrier.css/cal.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" /> 
+    <script src="../testIniJs/testIni.js"></script>
+    <script src="../testJs/test.js"></script>
+
+    <style>
+            #carte{
+                margin-top: 15%;
+            }
+
+            .border1{
+                background-color: white;
+            }
+           
+            
+            .border2{
+                background-color: #21314d;
+                padding-top: 10px; padding-bottom: 10px;
+            }
+            /*block selection de carte, buttons valider et annuler*/
+            .border3{
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+            
+            .selectCarte{
+                height: 40px;
+                margin-bottom: 20px;
+            }
+            /*Input annuler carte*/
+            #annulerCarte, #ajouterCarte{
+                height: 40px;
+                border: none;
+                border-radius: 4px;
+                color:white;
+            }
+            #annulerCarte{
+                background-color:#8c9da1;
+                text-align: center;
+            }
+            #ajouterCarte{
+                background-color: #01c3a7;
+                text-align: center;
+            }
+            .userIcone {
+                border-radius: 5px;
+                background-color: white;
+                padding-right: 5px;
+                line-height: 30px;
+                text-align: right;
+            }
+
+            .plusIcone, .textAjoutCarte{
+                padding-left: 5px;
+                line-height: 30px;
+                text-align: left;
+                color: white;
+            }
+
+            .textAjoutCarte{
+                font-size: 1.5em;
+            }
+
+            /*Fond alert*/
+            #IdFond{
+                        /** Firefox **/
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                
+                height: 100%;
+                width: 100%;
+                z-index: 1000;
+                display: none;
+                border: none;
+                background-color: black;
+                -moz-opacity: 0.30;
+                opacity: 0.30;
+                filter : alpha(opacity=30);
+                
+                /** IE **/
+                position: expression(IEFixedElementPos());
+                top: expression(IEFixedElementTop(0));
+                left: expression(IEFixedElementLeft(0));
+                width: expression(IE100Width());
+                height: expression(IE100Height());
+            }
+
+            /*Container affichant la boite */
+            #IdContainer{
+                position: fixed;
+                display: none;
+                z-index: 2000;
+                
+            }
+    
+        </style>
+</head>
+
+
+<body>
+    <!-- Boite de dialogue affichant l'option ajouter carte -->
+    <!-- cette boite apparaît lorsque on clique sur "Cartes et abonnement"-->
+
+    <div id="IdFond" class="fond"></div>
+    <div id="IdContainer" class="container">
+            
+            <div id="carte" class="row carte "  role="alert">
+                <div class="col-sm-offset-3 col-sm-6 border1">
+                    <div class="row border2">
+                        <span class="col-sm-offset-1 col-sm-1 userIcone"><i class="fas fa-user"></i></span>
+                        <span class="col-sm-1 plusIcone"><i class="fas fa-plus"></i></span>
+                        <span class="col-sm-5 textAjoutCarte">Ajouter une carte</span>
+                    </div>
+
+                    <div class="row border3">
+                    <select id="carteEtAbonnemnt" class="col-sm-offset-2 col-sm-8 selectCarte">    
+                        <option value="carteJeune"> SNCF - Carte Jeune </option>
+                        <option value="CarteWeekEnd"> SNCF - Carte Week-end</option>
+                        <option value="CarteSenior">SNCF - Carte Senior+</option>
+                        <option value="abon.TGV">SNCF - Abonnement TGVmax</option>
+                        <option value="EnfantPlus">SNCF - Carte Enfant+</option>
+                        <option value="Fam.Nombr30"> SNCF - Carte Famille Nombreuse 30 %</option>
+                        <option value="Fam.Nombr40"> SNCF - Carte Famille Nombreuse 40 % </option>
+                    
+                    </select>
+
+                    <input id="annulerCarte" class="col-sm-offset-5 col-sm-2" type="button" value="ANNULER" onclick="fermeBoite()"><!--On cliquant sur annuler on ferme la boite-->
+                    <input id="ajouterCarte" class="col-sm-offset-1 col-sm-2" type="button" value="AJOUTER" onclick="fermeBoite()"><!--On cliquant sur ajouter on ferme la boite-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin de la boite de dialogue-->
+
+    <!--Entête de la page-->
+    <header>
+        <span>trainline</span>
+        <span>CRÉER UN COMPTE</span>
+        <span>SE CONNECTER</span>
+        <span>AIDE</span>
+        <span>drapeau</span>
+        <span>EUR</span>
+    </header>
+
+    <!--Le corps de la page-->
+    <div class="container">
+
+        <!--texte de bienvenue-->
+        <div class="row">
+            <h1>Réservez vos billets de train et de bus. <br>En France et en Europe.</h1>
+            <p>Voyagez avec Trainline, leader indépendant de la vente de billets de train et de bus en Europe.</p>
+        </div>
+
+        <!--bare de recherche-->
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-5 containerBareSearch">
+                <form>
+                    
+                    <div class="row">
+                        <p>Quel est votre trajet ?</p>
+                        <i class="fas fa-angle-double-right icone"></i> <i class="fas fa-angle-double-left icone2"></i> <span class="circle"><i class="fas fa-sync"></i></span>
+                        <div class="list-group gare">
+                            <input id="ChampDeDepart" type="text"name="gareDeDepart" class="col-sm-12 list-group-item champ" placeholder="Saisisez votre gare de départ" required>
+                            <input id="via" type="text" name="gareDarriver" class="col-sm-12 list-group-item via champ" placeholder="Via">
+                            <input id="ChampDarriver" type="text" class="col-sm-12 list-group-item champ" placeholder="Saisisez votre gare d'arrivée.." required>
+                        </div>
+                        <i class="far fa-arrow-alt-circle-up icone"></i><i class="far fa-arrow-alt-circle-down icone2"></i>
+                        <div class="form-group">
+                            <div class="input-group champGareDepart champGare">
+                                <!-- <button id="champ_date2" class="form-control">Aller</button>-->
+                                <input type="button" id="champ_date2" class="form-control" value="Aller">
+                                <span id="champHeurDepart" class="input-group-addon">à partir de</span>  
+                            </div>
+                            <div class="input-group  champGareArriver champGare">
+                                <input type="button" id="champ_dateRetour" class="form-control" value="Retour">
+                                <span id="champHeurArriver" class="input-group-addon">à partir de</span> 
+                            </div>
+                        </div>
+                        
+                       
+                        
+                        <div class="form-group contChoixPassager">
+                                <i class="fas fa-user iconeUser"></i>
+                               
+                                <div class="input-group groupChoixPassager">
+                                  <input id="choixDuPassager" type="button" class="form-control  age" value="1Adulte (26-59)">
+                                  <span id="iconeChoixDuPassager" class="input-group-addon contFa-plus"><i class="fas fa-plus"></i></span> 
+                                </div>
+
+                        </div>
+
+                        <div class="row containerSearch">
+                            <a class="col-sm-6 codeReduction">Utiliser un code de réduction</a>
+                            <input class="col-sm-offset-2 col-sm-4 searche" type="submit" value="RECHERCHER">
+                        </div>
+                        
+                    </div>
+                        
+                </form>
+
+                
+                            
+            </div>
+
+            <!--CONTAINER AFFICHANT LE RESULTAT-->
+
+            <!-- Calendrier-->
+            <div id="calendar" class="col-sm-5">
+                <div class="row">
+                    <p class="col-sm-offset-1 col-sm-6">Choisissez la date du départ</p>
+                    <p id="optionPasDeRetour" class="col-sm-4">PAS DE RETOUR</p>
+                </div>
+                
+                <!--<p>Date : <input type="text" value="" name="date2" id="champ_date2" size="12" maxlength="10"></p>-->  
+                <div id="calendarMain2" class="row">
+                    <!--  <input value="Calendrier" onclick="calToogle(1);" type="button"> -->
+                </div>
+                
+                <div id="heur" class="row">
+                    
+                                <span class="h" type="button">6h</span>
+                                <span class=" h" type="button">8h</span>
+                                <span class=" h hgr" type="button">10h</span>
+                                <span class=" h hgr" type="button">12h</span>
+                                <span class=" h hgr" type="button">14h</span>
+                                <span class=" h hgr" type="button">16h</span>
+                                <span class=" h hgr" type="button">18h</span>
+                                <span class=" h hgr" type="button">20h</span>
+                                <span class=" h hgr" type="button">22h</span>
+                   
+                    
+                </div>
+                
+            </div>
+
+            <!--Choix du passager-->
+            <div id="containerChoixDuPassager" class="col-sm-5 containerChoixDuPassager">
+                <div id="contnairTitre" class="row">
+                        <p id="titre" class="col-sm-offset-1 col-sm-10">Choisissez vos passagers</p>
+                </div>
+
+                
+                <form id="agePassager" class="row agePassager">
+                    
+                    
+                        <div id="contAgePassager" class="col-sm-offset-1 col-sm-5 contAgePassager">
+                            <div class="form-group ">
+                                <div id="passagerAge"  class="input-group passagerAge">
+                                        <span id="suprimePassager" style="display:none" class="input-group-addon"><i class="fas fa-times"></i></span>
+                                        <select id="ageClient" class="form-control ageClient">
+                                                <option id="jeune" value="Jeune">Jeune (0-25)</option>
+                                        
+                                                <option selected value="Adulte (26-59)">Adulte (26-59)</option>
+                                        
+                                                <option value="Senior">Senior (60+)</option>
+                                            
+                                        </select>
+                                </div>
+                            </div>
+                                
+                        </div>
+
+                        <div id="autreContainer" class="col-sm-5 autreContainer">
+                                <div id="groupAgeContainer" style="display:block" class="form-group groupAgeContainer">
+                                        <div class="input-group">
+                                          <input id="ageUtilisateur" type="text" class="form-control age" value="" placeholder="Age">
+                                          <span id="ok" class="input-group-addon ok">OK</span> 
+                                        </div>
+                                </div>
+                                
+                                <input style="display:none" id="carteAbonnement"  type="button" value="Cartes et abonnements" class="form-control carteAbonnement">
+                            
+                            
+                        </div>
+
+                        <div id="descriptAgeJeune" class="col-sm-offset-2 col-sm-8 descriptAgeJeune">L’âge du passager permettra d’obtenir le meilleur tarif.</div>
+                          
+                        
+                    
+                </form>
+
+                <div id="ajoutPassager" class="row ajoutPassager">
+                    <div class="form-group col-sm-offset-1 col-sm-10">
+                            <span id="textAjoutPassager"><i class="fas fa-user-plus"></i> AJOUTER UN AUTRE PASSAGER</span>
+                    </div>
+                </div>
+
+                <div id="seConnecter" class="row">
+                    <div class="form-group col-sm-offset-1 col-sm-10">
+                        <p><strong>Retrouver vos passagers sauvegardés ?</strong><br>
+                            Connectez-vous à votre compte pour accéder aux passagers enregistrés lors de vos précédentes recherches. <br>
+                            <a href="#"><i class="fas fa-sign-in-alt"></i> SE CONNECTER</a>
+                        </p>
+                    </div>
+                </div>
+                
+
+            </div>
+
+            <div id="containerDroite" class="col-sm-5 containerBareSearchDroite">
+                <div id="contTitreP" class="row ligne1">
+                    <p id="titreP" class="col-sm-offset-1 col-sm-10">Les petits plus de Trainline</p>
+                </div>
+
+                <div class="row ligne2">
+                    <p class="col-sm-offset-1 col-sm-10">
+                        <div class="row">
+                            <div class="col-sm-2"><span class="iconGauche"><i class="fab fa-avianex"></i></span></div>
+                            <div class=" col-sm-9 pargraphe"><strong>Vos billets au meilleur prix</strong><br>
+                                Achetez vos billets aux prix fixés par les transporteurs, sans frais supplémentaires.</div>
+                        </div>
+                    </p>
+                </div>
+
+                <div class="row">
+                    <p class="col-sm-offset-1 col-sm-10">
+                            <div class="row">
+                                    <div class="col-sm-2"><span class="iconGauche"><i class="far fa-address-card"></i></span></div>
+                                    <div class="col-sm-9 pargraphe"><strong>Cartes de réduction</strong><br>
+                                        Elles sont toutes acceptées, comme vos cartes de fidélité.</div>
+                            </div>
+                        
+                    </p>
+                </div>
+
+
+                <div class="row">
+                        <p class="col-sm-offset-1 col-sm-10">
+                                <div class="row">
+                                        <div class="col-sm-2"><span class="iconGauche"><i class="fas fa-cogs"></i></span></div>
+                                        <div class="col-sm-9 pargraphe"><strong>Payez en toute sécurité</strong><br>
+                                            CB, Amex, PayPal, Chèques-Vacances ANCV : c’est vous qui voyez.</div>
+                                    </div>
+                                
+                        </p>
+                 </div>
+
+                <div class="row">
+                    <hr class="col-sm-offset-1 col-sm-9 train">
+                    <div class="row">
+                        <p class="col-sm-offset-1 col-sm-10 text">L’app leader pour voyager en train et en bus en Europe.</p>
+                        <img src="../image/containerBare/app_store.svg" class="col-sm-offset-2 col-sm-4"> <img src="../image/containerBare/google_store.svg" class="col-sm-4"> 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+   
+
+    <script src="../ajax/ajax.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
